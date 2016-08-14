@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+
+
+
+
+//this is the keypress to start the game
+document.onkeyup = function(event) {
+	var gameNum = 0;
+			// console.log(gameNum);
+
+	// this is the user guess	
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+			// console.log(userGuess);		
+
+	// word list
+		var wordList = ["please", "help", "drowning"]
+			// wordList.push("word");
+			// for (var i = 0 ; i <  wordList.length; i++) {
+			// 			console.log(wordList[i])
+			// }
+			// console.log(wordList[gameNum]);
+
+
+
+	// Breakout 
+		// letters into an array
+		var breakout = wordList[gameNum].split("");
+			// console.log(breakout);
+
+
+		// for (var i = 0 ; i <  gameWord.length; i++) {
+			// console.log(breakout[i])
+		// 	}
+
+
+	// display it like this  _ _ _ _ _ _ _.
+		var displayLetters = ""
+
+		for (var i = 0 ; i < breakout.length; i++){
+
+			displayLetters = displayLetters + "_ "
+			
+		}
+		// Current 
+		console.log(displayLetters);
+
+
+
+
+
+
+
+
+//Start replacing the letters
+	//for the user guess compare each letter in breakout
+for (var i = breakout.length - 1; i >= 0; i--) {
+}
+
+	if (userGuess === breakout[i]) {
+		displayLetters[i]
+	}
+
+	
+
+	// Guesses
+		// var guessedLetters = []
+		// 		guessedLetters.push("a")
+		// 		console.log(guessedLetters(0))
+					
+	// When the game starts a word is picked and a loop is started
+			
+	// user hit a key to guess 
+	// for each letter checking agains all the letters in the word selected
+
+			// console.log(gameNum);
+		
+	//this is the end the keyup event
+}
+// gameNum++
+		</script>
+
+</body>
+</html>
+
+<!-- 
+Use key events to listen for the letters that your players will type.
+
+Display the following on the page:
+
+	Press any key to get started!
+
+	Wins: (# of times user guessed the word correctly).
+
+	display it like this  _ _ _ _ _ _ _.
+
+	reveal them: m a d o _ _ a.
+
+	Number of Guesses Remaining: (# of guesses remaining for the user).
+
+	Letters Already Guessed: (Letters the user has guessed, displayed like L Z Y H).
+
+	After the user wins/loses the game should automatically choose another word and make the user play it. -->
+
+
