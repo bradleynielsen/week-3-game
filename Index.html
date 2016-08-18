@@ -5,87 +5,107 @@
 </head>
 <body>
 <script type="text/javascript">
+	//INITIALZE the game
 
+		// Create word list
+			var wordList = ["please", "help", "drowning"];
+				// wordList.push("word");
+				// for (var i = 0 ; i <  wordList.length; i++) {
+				// 			console.log(wordList[i])
+				// }
+				// console.log(wordList[gameNum]);
 
+		//PROMPT the user to start the game
+			var r = confirm("Press -OK- to begin the game");
+			if (r == true) {
+				
+				//start the game loop: for each wor in the array, loop through the routine
+				for (var g = wordList.length - 1; i >= 0; i--) {
+					Things[i]
+				}
+				
 
-
-
-
-//this is the keypress to start the game
-document.onkeyup = function(event) {
-	var gameNum = 0;
-			// console.log(gameNum);
-
-	// this is the user guess	
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-			// console.log(userGuess);		
-
-	// word list
-		var wordList = ["please", "help", "drowning"]
-			// wordList.push("word");
-			// for (var i = 0 ; i <  wordList.length; i++) {
-			// 			console.log(wordList[i])
-			// }
-			// console.log(wordList[gameNum]);
-
-
-
-	// Breakout 
-		// letters into an array
-		var breakout = wordList[gameNum].split("");
-			// console.log(breakout);
-
-
-		// for (var i = 0 ; i <  gameWord.length; i++) {
-			// console.log(breakout[i])
-		// 	}
-
-
-	// display it like this  _ _ _ _ _ _ _.
-		var displayLetters = ""
-
-		for (var i = 0 ; i < breakout.length; i++){
-
-			displayLetters = displayLetters + "_ "
 			
-		}
-		// Current 
-		console.log(displayLetters);
 
 
+			// Breakout letters into an array
+				var breakout = wordList[gameNum].split("");
+					// console.log(breakout);
 
+			// Display the word length in underscore  "_ _ _ _ _ _ _"
+				var blanks = []
 
+				for (var i = 0 ; i < breakout.length; i++){
 
-
-
-
-//Start replacing the letters
-	//for the user guess compare each letter in breakout
-for (var i = breakout.length - 1; i >= 0; i--) {
-}
-
-	if (userGuess === breakout[i]) {
-		displayLetters[i]
-	}
-
-	
-
-	// Guesses
-		// var guessedLetters = []
-		// 		guessedLetters.push("a")
-		// 		console.log(guessedLetters(0))
+					blanks.push("_ ");
 					
-	// When the game starts a word is picked and a loop is started
-			
-	// user hit a key to guess 
-	// for each letter checking agains all the letters in the word selected
+				}
+				
+				console.log(displayLetters);
 
-			// console.log(gameNum);
-		
-	//this is the end the keyup event
-}
-// gameNum++
-		</script>
+
+				//build the blanks display
+				for (var i = 0; i < letters.length; i++) {
+   					if (letters[i] === letterGuessed) {
+        				blanks[i] = letterGuessed;
+    				}
+
+
+			//this is the keypress to start the game
+			document.onkeyup = function(event) {
+
+
+				// this is the user guess	
+					var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+							// console.log(userGuess);		
+
+				
+
+
+				
+
+
+					// for (var i = 0 ; i <  gameWord.length; i++) {
+						// console.log(breakout[i])
+					// 	}	
+
+
+
+				//Start replacing the letters
+					//for the user guess compare each letter in breakout
+				for (var i = breakout.length - 1; i >= 0; i--) {
+				}
+					if (userGuess === breakout[i]) {
+						displayLetters[i].push
+
+
+					}
+
+				
+
+				// Guesses
+					// var guessedLetters = []
+					// 		guessedLetters.push("a")
+					// 		console.log(guessedLetters(0))
+								
+				// When the game starts a word is picked and a loop is started
+						
+				// user hit a key to guess 
+				// for each letter checking agains all the letters in the word selected
+
+						// console.log(gameNum);
+
+
+					
+			//this is the end the keyup event
+			}
+
+
+
+		} else {
+		    x = "You have come to the wrong place. Good bye.";
+		}
+</script>
 
 </body>
 </html>
