@@ -10,7 +10,7 @@
 			answer = "";
 			answer = wordList[gameNum];
 			answerArray = answer.split("");
-	console.log("Answer: " + answerArray);
+			// console.log("Answer: " + answerArray);
 			wrongGuesses = "";
 			displayString = "";
 			guessCounter = 7;
@@ -24,21 +24,7 @@
 
 		}/*end init fucntion*/
 
-	// // Print Function
-		// 	function printr() {
-		// 		//concatonate the wrongGuessArray
-		// 		for (var i = 0; i < displayArray.length; i++) {
-		// 			wrongGuesses = wrongGuesses + playerguess[i];
-		// 		 	}
-
-		// 		//concatonate the displayArray 
-		// 		for (var i = 0; i < displayArray.length; i++) {
-		// 			displayString = displayString + displayArray[i];
-		// 		 	}
-
-		// 		console.log(wrongGuesses);
-		//  		console.log(displayString);
-		// 	 }
+	
 
 	//Declare global arrays and variables
 		var gamesWon = 0;
@@ -110,8 +96,10 @@
 					if (newGame){
 						if (gameNum >0 ){
 							initializeGame();
-						} else {
-						console.log("this game is too short")
+						}
+						if (gameNum === 0 ){
+							console.log("this game is too short")
+							alert("blub blub blub");
 						}	
 					}
 					document.getElementById("display").innerHTML = displayArray; 
