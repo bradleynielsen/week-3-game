@@ -2,143 +2,135 @@
 <html>
 <head>
 	<title>Hangman</title>
+
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
-<body>
-<script type="text/javascript">
-console.log("Press any key to get started!")
-//Declare Functions	
-// INITIALIZE 
+	<body>
+		<script type="text/javascript">
+			console.log("Press any key to get started!")
+			// INITIALIZE function
+				function initializeGame(){
+					displayArray = [];
+					wrongGuessArray = [];
+					answerArray = [];
+					answer = "";
+					answer = wordList[gameNum];
+					answerArray = answer.split("");
+			console.log("Answer: " + answerArray);
+					wrongGuesses = "";
+					displayString = "";
+					guessCounter = 7;
+					newGame = false;
 
+					// build display array  ("_ _ _ _ _ _ ")
+					for (var i = 0 ; i < answerArray.length; i++){
+							displayArray.push("_ ");			
+						}
 
-	// // Print Function
-	// 	function printr() {
-	// 		//concatonate the wrongGuessArray
-	// 		for (var i = 0; i < displayArray.length; i++) {
-	// 			wrongGuesses = wrongGuesses + playerguess[i];
-	// 		 	}
+				}/*end init fucntion*/
 
-	// 		//concatonate the displayArray 
-	// 		for (var i = 0; i < displayArray.length; i++) {
-	// 			displayString = displayString + displayArray[i];
-	// 		 	}
+			// // Print Function
+				// 	function printr() {
+				// 		//concatonate the wrongGuessArray
+				// 		for (var i = 0; i < displayArray.length; i++) {
+				// 			wrongGuesses = wrongGuesses + playerguess[i];
+				// 		 	}
 
-	// 		console.log(wrongGuesses);
-	//  		console.log(displayString);
-	// 	 }
+				// 		//concatonate the displayArray 
+				// 		for (var i = 0; i < displayArray.length; i++) {
+				// 			displayString = displayString + displayArray[i];
+				// 		 	}
 
+				// 		console.log(wrongGuesses);
+				//  		console.log(displayString);
+				// 	 }
 
-	var wordList = ["please", "help", "drowning"];
-	// console.log(wordList);
-	
-	var displayArray = [];
-	// console.log(displayArray);
-	
-	var	wrongGuessArray = [];
-	// console.log(wrongGuessArray);
-	
-	var answerArray = [];
-	// console.log(answerArray);
+			//Declare global arrays and variables
+				var gamesWon = 0;
+				var gamesLost = 0;
+				var wordList = ["please", "help", "drowning"];
+				var gameNum = 0;
+				// console.log(wordList);
 
-	var gameNum = wordList.length-1;
-	// console.log(gameNum);
+				var 
+					displayArray, 
+					wrongGuessArray,
+					answerArray,
+					gameNum,
+					answer,
+					answerArray,
+					wrongGuesses,
+					displayString,
+					guessCounter,
+					newGame;
 
-	var answer = "";
-	// console.log(answer);
+			// run INITIALIZE
+			initializeGame();
 
-	var answer = wordList[gameNum];
-	// console.log(answer);
+			//Game start on keyup
+				document.onkeyup = function(event) {
+					var playerguess = String.fromCharCode(event.keyCode).toLowerCase();
+					//For each letter in the wordArray: check to see if the guessed letter fits
+							
+					//if the letter is wrong, add it to the wrong letters array
+					if (wrongGuessArray.indexOf(playerguess) === -1 ) {
+						if (answerArray.indexOf(playerguess) === -1 ) {		
+								wrongGuessArray.push(playerguess);
+								guessCounter--;
+						}			
+							// debugger;
+					}
 
-	answerArray = answer.split("");
-	console.log("Answer: " + answerArray);
+							for (var i = answerArray.length - 1; i >= 0; i--) {
+								//loop value handlers for the answer and guess arrays:
+								var a = answerArray[i];
+								var g = playerguess;
 
-	//this string will be printed as a list of the player's wrong guesses
-	var wrongGuesses = "";
-	//this string will be printed as the players correct guesses,
-	var displayString = "";
+								// add the correct letters to the display	
+								if (g === a) {
+									//IS a match: Push the letter to the corresponding index in displayArray
+									displayArray.splice(i, 1, g);
+								}
+							}
 
-	// this string will count the wins
-	var gamesWon = 0;
+							if (guessCounter === 0) {
+			console.log("YOU loose :( ");
+								gamesLost++;					
+								gameNum++;
+								newGame = true;	
+								// console.log("gamesLost++; gameNum++;newGame = true;	" + gamesLost + gameNum+ newGame );
 
-	//
-	var guessCounter = 7;
+							} else if (displayArray.indexOf("_ ") === -1) {
+								console.log("YOU WIN!");
+								gamesWon++;
+								gameNum++;
+								newGame = true;	
+							}
 
-	//
-	var gamesLost = 0;
+						//if new game is set then do this
+							if (newGame){
+								if (gameNum >0 ){
+									initializeGame();
+								} else {
+								console.log("this game is too short")
+								}	
+							}
+							console.log("Display:" + displayArray);						
+							console.log("Guesses left: " + guessCounter);
+							console.log("Wins: " + gamesWon);
+							console.log("Games Lost: " + gamesLost);
+							console.log("Games played: " + gameNum);
 
-	var newGame = false;
+				}/*end of keyup*/
 
-	// build display array  ("_ _ _ _ _ _ ")
-	for (var i = 0 ; i < answerArray.length; i++){
-			displayArray.push("_ ");			
-		}
-
-
-
-
-
-
-
-		//Game start on keyup
-document.onkeyup = function(event) {
-	var playerguess = String.fromCharCode(event.keyCode).toLowerCase();
-	//For each letter in the wordArray: check to see if the guessed letter fits
-			
-	//if the letter is wrong, add it to the wrong letters array
-	if (wrongGuessArray.indexOf(playerguess) < 0 ) {
-				wrongGuessArray.push(playerguess);
-				guessCounter--;	
-	console.log("guessCounter: " +guessCounter);
-	// debugger;
-
-			}
-
-			for (var i = answerArray.length - 1; i >= 0; i--) {
-				//loop value handlers for the answer and guess arrays:
-				var a = answerArray[i];
-				var g = playerguess;
-
-				// add the correct letters to the display	
-				if (g === a) {
-					//IS a match: Push the letter to the corresponding index in displayArray
-					displayArray.splice(i, 1, g);
-				}
-			}
-			console.log("Display:" + displayArray);						
-			console.log("wrong guesses:" + wrongGuessArray);
-
-			if (guessCounter === 0) {
-				console.log("YOU loose :( ");
-				gamesLost++;					
-				gameNum++;
-				newGame = true;	
-
-			} else if (displayArray.indexOf("_ ") === -1) {
-				console.log(displayArray.indexOf("_ "));
-				console.log("YOU WIN!");
-				console.log(displayArray);
-				gamesWon++;
-				gameNum++;
-				newGame = true;	
-			}	
-
-			//if new game then this
-
-			console.log("Guesses left: " + guessCounter);
-			console.log("Games Won" + gamesWon);
-			console.log("Games Lost: " + gamesLost);
-
-
-
-
-}/*end of keyup*/
-
-		 	//print both the gueses and the display
-		 	
-		 	// console.log(blanks(););
-		// this is the end the keyup event//
-	// }// this is the end the confirm box//
-			
-</script>
+					 	//print both the gueses and the display
+					 	
+					 	// console.log(blanks(););
+					// this is the end the keyup event//
+				// }// this is the end the confirm box//			
+		</script>
 
 </body>
 </html>
